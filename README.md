@@ -20,3 +20,36 @@ $ curl -v http://localhost:8080
 ```bash
 $ docker-compose down
 ```
+
+
+### Utils
+
+## Create client
+
+Endpoint :
+```bash
+localhost:8080/api/clients
+```
+Model :
+
+```json
+{
+	"firstName":"Jean",
+	"lastName":"Dupont"
+}
+```
+
+## Create client
+
+Endpoint :
+```bash
+localhost:8080/api/clients
+```
+Model :
+
+```json
+{
+	"firstName":"Jean",
+	"lastName":"Dupont"
+}
+```
