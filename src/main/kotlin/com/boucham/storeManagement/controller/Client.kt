@@ -5,7 +5,6 @@ import com.boucham.storeManagement.repository.ClientRepository
 import org.apache.commons.logging.LogFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
-import java.util.*
 import javax.servlet.http.HttpServletResponse
 
 @RestController
@@ -17,22 +16,29 @@ class ClientController(@Autowired val repository: ClientRepository) {
     fun getClients(): List<Client> = repository.findAll()
 
     @GetMapping("/{id}")
-    fun getClient(@PathVariable id: String, response: HttpServletResponse): Optional<Client>? {
+    fun getClient(@PathVariable id: String, response: HttpServletResponse): Client? {
         val result = repository.findById(id);
+        logger.info("Return client id: ${id} info")
         if (result.isEmpty) return notFound(response);
-        return result
+        return result.get()
     }
 
     @PostMapping()
     fun createClient(@RequestBody client: Client, response: HttpServletResponse): String? {
         val newClient = repository.insert(client)
+        logger.info("Client : ${newClient.firstName}, ${newClient.lastName} added under id: ${newClient.id}")
         return added(response)
     }
 
     @DeleteMapping("/{id}")
-    fun removeClient(@PathVariable id: String, response: HttpServletResponse): Optional<Client>? {
+    fun removeClient(@PathVariable id: String, response: HttpServletResponse): String? {
         val result = repository.findById(id);
-        if (result.isEmpty) return notFound(response);
-        return result
+        if (!result.isEmpty) {
+            repository.delete(result.get())
+            logger.info("Client id: ${result.get().id} deleted")
+        } else {
+            return notFound(response);
+        }
+        return deleted(response)
     }
 }
