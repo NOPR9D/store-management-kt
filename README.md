@@ -27,11 +27,58 @@ $ docker-compose down
 http://localhost:8080/swagger-ui/index.html
 ```
 
-Model :
+### API
+```bash
 
-```json
-{
-	"firstName":"Jean",
-	"lastName":"Dupont"
-}
+baseUrl : localhost:8080
+
+----
+
+Get all Clients
+GET : /api/clients
+
+Get Client by id
+GET : /api/client/${storeId}
+
+Create Client
+POST : /api/clients
+Model : {
+        	"firstName":"",
+        	"lastName":""
+        }
+
+Delete Client by id
+DELET : /api/client/${storeId}
+---
+
+Get all Store 
+GET : /api/stores
+
+Get Store by id
+GET : /api/stores/${storeId}
+
+Create Store
+POST : /api/stores
+Model : {
+       	"name":""
+        }
+
+Delete Store : 
+DELET : /api/stores/${storeId}
+---- 
+
+Link Client with Store
+POST : /api/actions/link
+Model : {
+        	"clientId":"",
+        	"storeId":""
+        }
+
+UnLink Client with Store
+POST : /api/actions/UnLink
+Model : {
+        	"clientId":"",
+        	"storeId":""
+        }
+
 ```
