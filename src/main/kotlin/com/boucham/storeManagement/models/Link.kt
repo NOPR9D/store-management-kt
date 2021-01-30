@@ -5,10 +5,12 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.Field
 
-// Model magasin
-@Document(collection = "stores")
-data class Store(
-        @JsonProperty("id")  @Id val id: String? = null,
-        @JsonProperty("name") @Field val name: String,
-        @JsonProperty("clients") val clients: MutableList<Client>? = mutableListOf()
+// Model client
+@Document(collection = "links")
+data class Link(
+        @JsonProperty("Id") @Id val id: String? = null,
+        @JsonProperty("clientId")  @Field val clientId: String,
+        @JsonProperty("storeId")  @Field val storeId: String
 )
+
+

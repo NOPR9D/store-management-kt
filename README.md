@@ -21,30 +21,12 @@ $ curl -v http://localhost:8080
 $ docker-compose down
 ```
 
+### Swagger
 
-### Utils
-
-## Create client
-
-Endpoint :
 ```bash
-localhost:8080/api/clients
-```
-Model :
-
-```json
-{
-	"firstName":"Jean",
-	"lastName":"Dupont"
-}
+http://localhost:8080/swagger-ui/index.html
 ```
 
-## Create client
-
-Endpoint :
-```bash
-localhost:8080/api/clients
-```
 Model :
 
 ```json

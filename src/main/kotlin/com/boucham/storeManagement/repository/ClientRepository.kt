@@ -8,5 +8,7 @@ import java.util.*
 interface ClientRepository : MongoRepository<Client, String> {
 
     override fun findById(id: String): Optional<Client>
+
+
 }
 
