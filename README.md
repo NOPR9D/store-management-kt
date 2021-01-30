@@ -75,7 +75,7 @@ Model : {
         }
 
 UnLink Client with Store
-POST : /api/actions/UnLink
+POST : /api/actions/unlink
 Model : {
         	"clientId":"",
         	"storeId":""
