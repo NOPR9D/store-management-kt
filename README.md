@@ -11,8 +11,6 @@
 
 ```bash
 $ docker-compose up --build -d
-
-$ curl -v http://localhost:8080
 ```
 
 ### Shut down
