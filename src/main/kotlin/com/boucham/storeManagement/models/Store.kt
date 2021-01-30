@@ -10,5 +10,5 @@ import org.springframework.data.mongodb.core.mapping.Field
 data class Store(
         @JsonProperty("id")  @Id val id: String? = null,
         @JsonProperty("name") @Field val name: String,
-        @JsonProperty("clients") val clients: MutableList<Client>? = mutableListOf()
+        @JsonProperty("clients") var clients: MutableList<Client>? = mutableListOf()
 )

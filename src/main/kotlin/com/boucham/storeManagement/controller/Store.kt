@@ -23,7 +23,22 @@ class StoreController(@Autowired val storeRepository: StoreRepository, @Autowire
     // Info de tout les magasins
     @ApiOperation(value = "Get all stores info")
     @GetMapping()
-    fun getStores(): List<Store> = storeRepository.findAll()
+    fun getStores(response: HttpServletResponse): List<Store> {
+        var result = storeRepository.findAll()
+        var clients = clientRepository.findAll()
+
+
+        if (clients.isNotEmpty()) {
+            result.forEach { _it ->
+                val mappedResult = clients.filter { client -> !client.linkWith!!.find { it == _it.id }.isNullOrEmpty() }
+
+                _it.clients = mappedResult.toMutableList()
+            }
+
+        }
+
+        return result
+    }
 
     // Info d'un magasin (par id)
     @ApiOperation(value = "Get store info by id")
@@ -32,11 +47,14 @@ class StoreController(@Autowired val storeRepository: StoreRepository, @Autowire
         val result = storeRepository.findById(id);
         val clients = clientRepository.findAll()
 
-        val mappedResult = clients.map { client -> client.linkWith?.filter { it == id } }
-        logger.info(mappedResult)
-        logger.info("Return store id: $id info")
         if (result.isEmpty) return notFound(response);
-        return result.get()
+
+        var _stores = result.get().copy()
+        val mappedResult = clients.filter { client -> !client.linkWith!!.find { it == id }.isNullOrEmpty() }
+
+        _stores.clients = mappedResult.toMutableList()
+
+        return _stores
     }
 
     // Creer un magasin
