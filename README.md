@@ -38,7 +38,7 @@ Get all Clients
 GET : /api/clients
 
 Get Client by id
-GET : /api/client/${storeId}
+GET : /api/client/${clientId}
 
 Create Client
 POST : /api/clients
@@ -48,7 +48,7 @@ Model : {
         }
 
 Delete Client by id
-DELETE : /api/client/${storeId}
+DELETE : /api/client/${clientId}
 ---
 
 Get all Store 
