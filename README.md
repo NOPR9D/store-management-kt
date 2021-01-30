@@ -21,6 +21,8 @@ $ docker-compose down
 
 ### Swagger
 
+(swagger show models with all keys (need to ignore params like id, linkedWith ...) use model in this readme)
+
 ```bash
 http://localhost:8080/swagger-ui/index.html
 ```
