@@ -48,7 +48,7 @@ Model : {
         }
 
 Delete Client by id
-DELET : /api/client/${storeId}
+DELETE : /api/client/${storeId}
 ---
 
 Get all Store 
@@ -64,7 +64,7 @@ Model : {
         }
 
 Delete Store : 
-DELET : /api/stores/${storeId}
+DELETE : /api/stores/${storeId}
 ---- 
 
 Link Client with Store
